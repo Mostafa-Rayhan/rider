@@ -1,0 +1,172 @@
+{% extends 'home.html' %}
+{% load crispy_forms_filters %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+calculate distance
+{% endblock title %}
+{##}
+{#{% block content %}#}
+{##}
+{#<!-- Modal -->#}
+{#<div class="modal fade" id="mExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">#}
+{#  <div class="modal-dialog">#}
+{#    <div class="modal-content">#}
+{#      <div class="modal-header">#}
+{#        <h5 class="modal-title" id="exampleModalLabel">Distance to {{ destination }} is:</h5>#}
+{#        <button type="button" class="close" data-dismiss="modal" aria-label="Close">#}
+{#          <span aria-hidden="true">&times;</span>#}
+{#        </button>#}
+{#      </div>#}
+{#      <div class="modal-body">#}
+{#        {{ distance }} km#}
+{#      </div>#}
+{#    </div>#}
+{#  </div>#}
+{#</div>#}
+{##}
+{#{{ map|safe }}#}
+{##}
+{##}
+{#<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">#}
+{#    <div class="modal-dialog" role="document">#}
+{#        <div class="modal-content">#}
+{#            <div class="modal-header">#}
+{#                <h5 class="modal-title" id="exampleModalLongTitle">Location Search</h5>#}
+{#                <button type="button" class="close" data-dismiss="modal" aria-label="Close">#}
+{#                    <span aria-hidden="true">&times;</span>#}
+{#                </button>#}
+{#            </div>#}
+{#            <div class="modal-body">#}
+{#                <form action="" method="POST" autocomplete="off">#}
+{#                    {% csrf_token %}#}
+{#                      <div class="form-group">#}
+{#                          <i class="fa fa-thumb-tack" aria-hidden="true"></i>#}
+{#                          <input class="form-control" mr-2 type="search" placeholder="Your Location" aria-label="Search">#}
+{#                          {{ form.location }}#}
+{#                      </div>#}
+{#                        <div class="form-group">#}
+{#                            <input class="form-control" type="search" placeholder="Your Destination" aria-label="Search">#}
+{#    #}
+{#                        </div>#}
+{#                    {{ form|crispy }}#}
+{#                </form>#}
+{#            </div>#}
+{#            <div class="modal-footer">#}
+{#                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>#}
+{#                <button type="button" class="btn btn-primary" data-target="#bikeModal">Confirm</button>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#</div>#}
+{##}
+{#<form action="" method="POST" autocomplete="off">#}
+{#    {% csrf_token %}#}
+{#    {{form|crispy}}#}
+{#    <button type="submit" class="btn btn-primary">confirm</button>#}
+{#</form>#}
+{#<br>#}
+{#This product includes GeoLite2 data created by MaxMind, available from#}
+{#<a href="https://www.maxmind.com">https://www.maxmind.com</a>.#}
+{##}
+{#{% if request.POST and distance is not None %}#}
+{#    <script>#}
+{#        $(window).on('load', function(){#}
+{#            $('#mExampleModal').modal('show')#}
+{#        })#}
+{#    </script>#}
+{#{% endif %}#}
+{##}
+{#{% endblock content %}#}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                {% block content %}
+
+{#                    {% load crispy_forms_filters %}#}
+{#                    {% load crispy_forms_tags %}#}
+
+                    <div class="modal fade" id="bikeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Distance to {{ destination }} is:</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            {{ distance }} km
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {{ map|safe }}
+
+
+
+
+
+
+                    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Location Search</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <form action="" method="POST" autocomplete="off">
+                                {% csrf_token %}
+                                {{ form|crispy }}
+{#                                <div class="form-group">#}
+{#                                    <i class="fa fa-thumb-tack" aria-hidden="true"></i>#}
+{#                                    <input class="form-control" mr-2 type="search" placeholder="Your Location" aria-label="Search">#}
+{#                                    {{ form.location }}#}
+{#                                    {#}
+{#                                </div>#}
+{#                                <div class="form-group">#}
+{#                                    <input class="form-control" type="search" placeholder="Your Destination" aria-label="Search">#}
+{##}
+{#                                </div>#}
+
+                            </form>
+                          </div>
+
+                            This product includes GeoLite2 data created by MaxMind, available from
+                            <a href="https://www.maxmind.com">https://www.maxmind.com</a>.
+
+                            {% if request.POST and distance is not None %}
+                                <script>
+                                    $(window).on('load', function(){
+                                        $('#bikeModal').modal('show')
+                                    })
+                                </script>
+                            {% endif %}
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-primary" data-target="#bikeModal">Confirm</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                {% endblock %}

@@ -1,0 +1,179 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/64d58efce2.js"
+      crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <title>Sign in & Sign up Form</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="forms-container">
+        <div class="signin-signup">
+          <form method="POST" action="{% url 'login' %}" class="sign-in-form">
+
+            {% csrf_token %}
+                {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+                        {{ message }}
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+
+                <h2 class="title">Sign in</h2>
+                <div class="input-field">
+                  <i class="fas fa-user"></i>
+                  <input type="text" placeholder="Username" class="form-control" Required/>
+                </div>
+                <div class="input-field">
+                  <i class="fas fa-lock"></i>
+                  <input type="password" placeholder="Password" class="form-control" Required/>
+                </div>
+
+{#                  {% for message in messages %}#}
+{#                      <p id="messages">{{message}}</p>#}
+{#                  {% endfor %}#}
+
+                <input type="submit" value="Login" class="btn solid" />
+                <p class="social-text">Or Sign in with social platforms</p>
+                <div class="social-media">
+                  <a href="#" class="social-icon">
+                    <i class="fab fa-facebook-f"></i>
+                  </a>
+                  <a href="#" class="social-icon">
+                    <i class="fab fa-twitter"></i>
+                  </a>
+                  <a href="#" class="social-icon">
+                    <i class="fab fa-google"></i>
+                  </a>
+                  <a href="#" class="social-icon">
+                    <i class="fab fa-linkedin-in"></i>
+                  </a>
+                </div>
+          </form>
+              <!--<form method="POST" action="otp.html" class="sign-up-form">-->
+            <form method="POST" action="" class="sign-up-form">
+
+            {% csrf_token %}
+            <h2 class="title">Sign up</h2>
+            <div class="input-field">
+                <div class="input-group-append">
+                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                </div>
+                  <input type="text" Required/>
+                {{form.username}}
+            </div>
+
+            <div class="input-field">
+                <div class="input-group-append">
+                    <span class="input-group-text"><i class="fa fa-phone"></i></span>
+                </div>
+                  <input type="text" Required/>
+                {{form.phone}}
+            </div>
+            <div class="input-field">
+                <div class="input-group-append">
+                    <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                </div>
+                <input type="email" Required/>
+                {{form.email}}
+            </div>
+            <div class="input-field">
+                <div class="input-group-append">
+                    <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                </div>
+                  <input type="password" Required/>
+                {{form.password1}}
+            </div>
+            <div class="input-field">
+                <div class="input-group-append">
+                    <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                </div>
+{#                <input type="password" Required/>#}
+                {{form.password2}}
+            </div>
+
+              {{form.errors}}
+
+            <input type="submit" class="btn" value="Sign up" />
+            <p class="social-text">Or Sign up with social platforms</p>
+            <div class="social-media">
+              <a href="#" class="social-icon">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" class="social-icon">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#" class="social-icon">
+                <i class="fab fa-google"></i>
+              </a>
+              <a href="#" class="social-icon">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="panels-container">
+        <div class="panel left-panel">
+          <div class="content">
+            <h3>New here ?</h3>
+            <p>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis,
+              ex ratione. Aliquid!
+            </p>
+            <button class="btn transparent" id="sign-up-btn">
+              Sign up
+            </button>
+          </div>
+          <img src="{% static 'img/signIn.svg' %}" class="image" alt="" />
+        </div>
+        <div class="panel right-panel">
+          <div class="content">
+            <h3>One of us ?</h3>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
+              laboriosam ad deleniti.
+            </p>
+            <button class="btn transparent" id="sign-in-btn">
+              Sign in
+            </button>
+          </div>
+          <img src="{% static 'img/signUp.svg' %}"  class="image" alt="" />
+        </div>
+      </div>
+    </div>
+
+    <script src="{% static 'app.js' %}"></script>
+    <script>
+						/* Because i didnt set placeholder values in forms.py they will be set here using vanilla Javascript
+		//We start indexing at one because CSRF_token is considered and input field
+		 */
+
+		//Query All input fields
+		var form_fields = document.getElementsByTagName('input')
+		form_fields[5].placeholder='Username';
+		form_fields[6].placeholder='+880';
+		form_fields[7].placeholder='Email';
+		form_fields[8].placeholder='Password';
+		form_fields[9].placeholder='Confirm Password';
+
+
+		for (var field in form_fields){
+			form_fields[field].className += ' form-control'
+		}
+	</script>
+  </body>
+</html>
+
+
+
